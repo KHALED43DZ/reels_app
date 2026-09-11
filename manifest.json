@@ -1,0 +1,16 @@
+{
+  "short_name": "صانع الريلز",
+  "name": "صانع موارد مسلسلات الريلز",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/1179/1179069.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "background_color": "#0f172a",
+  "theme_color": "#4f46e5",
+  "display": "standalone",
+  "orientation": "portrait"
+}

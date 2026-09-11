@@ -1,0 +1,66 @@
+:root {
+  --primary: #4f46e5;
+  --bg: #0f172a;
+  --card: #1e293b;
+  --text: #f8fafc;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 500px;
+  background: var(--card);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+h2 { margin-top: 0; color: #818cf8; text-align: center; }
+.subtitle { font-size: 0.85rem; color: #94a3b8; text-align: center; margin-bottom: 20px; }
+
+.form-group { margin-bottom: 15px; }
+label { display: block; margin-bottom: 5px; font-size: 0.9rem; }
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  background: #0f172a;
+  color: #fff;
+  box-sizing: border-box;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:disabled { opacity: 0.5; }
+
+.status { margin-top: 15px; text-align: center; font-weight: bold; color: #38bdf8; }
+
+.preview-card {
+  background: #0f172a;
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 15px;
+  border: 1px solid #334155;
+}
+.preview-card img { width: 100%; border-radius: 6px; margin-top: 8px; }
