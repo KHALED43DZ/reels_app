@@ -1,50 +1,102 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>صانع موارد الريلز</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#4f46e5">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>مصنع الحكايات | إنتاج حزم موارد المسلسلات الدرامية</title>
+<meta name="description" content="أداة لإنتاج حزمة موارد كاملة (صور، نصوص، دليل تركيب) لمسلسلات الريلز الدرامية القصيرة">
+<meta name="theme-color" content="#0d0f14">
+
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📜</text></svg>">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23161a24%22/><text x=%2250%22 y=%2268%22 font-size=%2255%22 text-anchor=%22middle%22>📜</text></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h2>🎬 صانع موارد مسلسلات الريلز</h2>
-    <p class="subtitle">قم بإنتاج السكريبت، الصور، والأصوات وحملها في ملف ZIP بضغطة زر.</p>
 
-    <div class="form-group">
-      <label for="apiKey">مفتاح Gemini API:</label>
-      <input type="password" id="apiKey" placeholder="أدخل مفتاح AI الخاص بك هنا">
+<div class="app-shell">
+
+  <header class="app-header">
+    <div class="brand">
+      <span class="brand-icon">📜</span>
+      <div>
+        <h1>مصنع الحكايات</h1>
+        <p class="subtitle">إنتاج حزمة موارد كاملة لمسلسلات الريلز الدرامية</p>
+      </div>
     </div>
+  </header>
 
-    <div class="form-group">
-      <label for="genre">نوع المسلسل:</label>
-      <select id="genre">
-        <option value="تاريخي ودراما/ألف ليلة وليلة">تاريخي ودراما / ألف ليلة وليلة</option>
-        <option value="حكم وقصص/كليلة ودمنة">حكم وقصص / كليلة ودمنة</option>
-        <option value="غموض وإثارة">غموض وإثارة</option>
-        <option value="رعب وخيال مظلم">رعب وخيال مظلم</option>
-      </select>
-    </div>
+  <main class="app-main">
 
-    <div class="form-group">
-      <label for="scenesCount">عدد المشاهد:</label>
-      <input type="number" id="scenesCount" min="2" max="6" value="3">
-    </div>
+    <section class="card">
+      <h2 class="card-title">1. الإعدادات</h2>
 
-    <div class="form-group">
-      <label for="storyIdea">فكرة المسلسل:</label>
-      <textarea id="storyIdea" rows="3" placeholder="أدخل فكرة القصة هنا..."></textarea>
-    </div>
+      <div class="field">
+        <label for="apiKey">مفتاح Gemini API</label>
+        <input type="password" id="apiKey" placeholder="أدخل مفتاح Gemini API الخاص بك" autocomplete="off">
+        <p class="hint">يُستخدم مباشرة من متصفحك ولا يُرسل لأي خادم آخر. احصل عليه من Google AI Studio.</p>
+      </div>
 
-    <button id="generateBtn" onclick="generateAssets()">🚀 بدء إنتاج حزمة الموارد</button>
+      <div class="field-row">
+        <div class="field">
+          <label for="genre">نوع المسلسل</label>
+          <select id="genre">
+            <option value="تاريخي ودراما">تاريخي ودراما</option>
+            <option value="حكم وقصص">حكم وقصص</option>
+            <option value="غموض وإثارة">غموض وإثارة</option>
+            <option value="رعب وخيال">رعب وخيال</option>
+          </select>
+        </div>
 
-    <div id="status" class="status"></div>
-    <div id="preview" class="preview-container"></div>
-  </div>
+        <div class="field">
+          <label for="sceneCount">عدد المشاهد: <span id="sceneCountValue">4</span></label>
+          <input type="range" id="sceneCount" min="2" max="6" value="4" step="1">
+        </div>
+      </div>
 
-  <script src="app.js"></script>
+      <div class="field">
+        <label for="idea">فكرة المسلسل</label>
+        <textarea id="idea" rows="4" placeholder="مثال: قصة من ألف ليلة وليلة عن تاجر خدعه صديقه، أو حكاية من كليلة ودمنة عن الثعلب والأسد..."></textarea>
+      </div>
+
+      <button id="generateBtn" class="primary-btn">
+        <span class="btn-icon">🚀</span>
+        <span>بدء إنتاج حزمة الموارد</span>
+      </button>
+    </section>
+
+    <section class="card" id="progressCard" hidden>
+      <h2 class="card-title">2. حالة التقدم</h2>
+      <div class="progress-track">
+        <div id="progressBar" class="progress-bar"></div>
+      </div>
+      <p id="statusText" class="status-text">جاري التجهيز...</p>
+      <div id="log" class="log"></div>
+    </section>
+
+    <section class="card" id="resultsCard" hidden>
+      <h2 class="card-title">3. المعاينة</h2>
+      <div id="storyTitle" class="story-title"></div>
+      <div id="scenesGrid" class="scenes-grid"></div>
+      <button id="downloadBtn" class="primary-btn secondary" hidden>
+        <span class="btn-icon">⬇️</span>
+        <span>تحميل حزمة الموارد (ZIP)</span>
+      </button>
+    </section>
+
+  </main>
+
+  <footer class="app-footer">
+    <p>يعمل بدون اتصال بعد أول تحميل &middot; PWA قابل للتثبيت</p>
+  </footer>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
